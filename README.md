@@ -20,6 +20,12 @@ See the following json example.
 
 ```
 
+In the project code, replace the strings. The following is one way to do this in javascript.
+
+
+``` javascript
+translation.replace('%{num1}', numberVar)
+```
 
 ### Downloading Translations
 
