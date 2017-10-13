@@ -33,3 +33,17 @@ translation.replace('%{num1}', numberVar)
 2. Update the config.json file as needed
 3. Download dependancies with `npm install`
 4. Using a command line, navigate to this folder and run  `node download.js`
+
+### Translation Files
+
+>th.json
+
+``` json
+{
+    "all": {
+        "game_title.attack": "โจมตี",
+        "game_title.bonus_today": "วันนี้",
+        "game_title.btn_play": "เล่น"
+    }
+}
+```
