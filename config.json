@@ -2,6 +2,5 @@
 	"apiKey": "",
 	"password": "",
 	"masterRevision": "",
-	"tags": [],
-	"manual-languages": []
-}
+	"tags": null,
+	"manual-languages": null

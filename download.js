@@ -18,10 +18,21 @@ function pull(locale) {
 			var error = 'Got an error code ' + res.statusCode;
 			return console.log(error.red);
 		}
+
 		try {
 			var data = JSON.parse(body);
 		} catch(e) {
 			return console.log('Failed to parse json'.red);
+		}
+
+		if (data.error) {
+			var error = 'Got an error code ' + res.statusCode;
+			return console.log(data.error.details.red);
+		}
+
+		// Workaround for strange encoding issue with escape sequences
+		for (var key in data[locale].all) {
+			data[locale].all[key] = data[locale].all[key].split('//').join('/');
 		}
 
 		var filename = './translations/' + locale + '.json';
@@ -66,8 +77,10 @@ function localeList() {
 		}
 
 		var keys = Object.keys(data);
-		keys = config['manual-languages'].concat(keys)
-		var message = 'Found ' + keys.length + ' locales'
+		if (config['manual-languages']) {
+			keys = config['manual-languages'].concat(keys);
+		}
+		var message = 'Found ' + keys.length + ' locales';
 		console.log(message.green)
 
 		keys.forEach(function(key) {
